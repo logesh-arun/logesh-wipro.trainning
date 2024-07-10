@@ -1,0 +1,166 @@
+Write a c# program to convert number in characters. 
+
+	Input :  123
+	Output :  one two three 
+	
+	Input :  2024
+	Output :  two zero two four
+using System;
+
+class NumberToWordsConverter
+{
+    
+    static string[] ones = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    static string[] tens = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+    static string[] teens = { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                              "seventeen", "eighteen", "nineteen" };
+
+    
+    static string ConvertTens(int num)
+    {
+        if (num < 10)
+            return ones[num];
+        else if (num < 20)
+            return teens[num - 10];
+        else
+        {
+            return tens[num / 10] + " " + ones[num % 10];
+        }
+    }
+
+    // Function to convert a three-digit number into words
+    static string ConvertHundreds(int num)
+    {
+        if (num < 100)
+            return ConvertTens(num);
+        else
+        {
+            return ones[num / 100] + " hundred " + ConvertTens(num % 100);
+        }
+    }
+
+    
+    static string NumberToWords(int num)
+    {
+        if (num == 0)
+            return "zero";
+
+        string words = "";
+
+        if ((num / 1000000) > 0)
+        {
+            words += NumberToWords(num / 1000000) + " million ";
+            num %= 1000000;
+        }
+
+        if ((num / 1000) > 0)
+        {
+            words += NumberToWords(num / 1000) + " thousand ";
+            num %= 1000;
+        }
+
+        if ((num / 100) > 0)
+        {
+            words += ConvertHundreds(num);
+        }
+        else if ((num % 100) > 0)
+        {
+            words += ConvertTens(num);
+        }
+
+        return words;
+    }
+
+    static void Main()
+    {
+        
+        int input1 = 123;
+        int input2 = 2024;
+
+        Console.WriteLine("Input :  " + input1);
+        Console.WriteLine("Output : " + NumberToWords(input1));
+
+        Console.WriteLine();
+
+        Console.WriteLine("Input :  " + input2);
+        Console.WriteLine("Output : " + NumberToWords(input2));
+    }
+}
+
+2)   Write a c# program to generate the following series using loops in c#:
+
+		 a.  1  4  9  16   25  36  49  64  81 100
+		 b.  0   1    1   2   3  5  8  13  21  34  55 89 144 
+		 c.   3   5   6   9    10  12  15  18  20  21 24  25  27  30
+		     
+
+A)
+using System;
+
+class SeriesGenerator
+{
+    static void Main()
+    {
+        Console.WriteLine("Series a:");
+        for (int i = 1; i <= 10; i++)
+        {
+            int square = i * i;
+            Console.Write(square + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+B)using System;
+
+class SeriesGenerator
+{
+    static void Main()
+    {
+        Console.WriteLine("Series b:");
+        int a = 0, b = 1;
+        Console.Write(a + " ");
+        Console.Write(b + " ");
+        
+        for (int i = 2; i <= 12; i++) 
+        {
+            int next = a + b;
+            Console.Write(next + " ");
+            a = b;
+            b = next;
+        }
+        Console.WriteLine();
+    }
+}
+
+C)using System;
+
+class SeriesGenerator
+{
+    static void Main()
+    {
+        Console.WriteLine("Series c:");
+        int num = 3;
+        int increment = 2;
+
+        for (int i = 0; i < 14; i++) 
+        {
+            Console.Write(num + " ");
+            num += increment;
+            increment++;
+
+          
+            if (num % 4 == 0)
+            {
+                num += increment;
+                increment++;
+            }
+        }
+        Console.WriteLine();
+    }
+}
+
+
+
+
+
