@@ -1,0 +1,107 @@
+Why do we use functions in programming languages?
+Modularity: Functions allow us to break down a program into smaller, manageable parts.
+Abstraction: Functions provide an abstraction layer. Instead of having to understand the entire implementation of a task, developers can work with higher-level functions that hide the complexity of the underlying operations.
+Code Organization: Functions help in organizing code logically.
+Code Reusability: Functions promote code reusability
+Debugging and Testing: Functions make it easier to test and debug code. 
+Encapsulation: Functions encapsulate logic and data. 
+Parameter Passing: Functions enable the passing of parameters, which allows them to operate on different sets of data
+
+
+Diff. between parameters and arguments?
+
+Certainly! Here's a table format to clearly distinguish between parameters and arguments:
+
+| **Parameters**                                  | **Arguments**                                    |
+|--------------------------------------------------|--------------------------------------------------|
+| Variables declared in the function definition.   | Actual values or expressions passed to a function.|
+| Define what type and how many arguments a function expects. | Fulfill the parameter requirements of a function.|
+| Part of the function signature.                  | Passed during function invocation.               |
+| Example:                                         | Example:                                         |
+| ```python                                        | ```python                                        |
+| def greet(name):                                 | greet("Alice")                                   |
+|     print(f"Hello, {name}!")                     |                                                  |
+| ```                                              | ```                                              |
+| In this example, `name` is a parameter.          | In this example, "Alice" is an argument.         |
+
+This table should help clarify the distinction between parameters and arguments in the context of programming functions.
+
+What is function overloading?
+Function overloading refers to the ability to define multiple functions with the same name but with different parameter lists (different types or different numbers of parameters) within the same scope. 
+Number of Parameters: Functions can have the same name but different numbers of parameters.
+Type of Parameters: Functions can have the same name but parameters of different types.
+Sequence of Parameters: Functions can have the same name but parameters in a different sequence.
+
+
+
+
+
+
+Write a c# program to define the functions for following requirements:
+
+		a.   Find out factorial of the given number 
+		b.   Print each word of the given string  in a new line.
+					Eg:   Input :   Welcome to C# Programming
+							Output:   		Welcome 
+
+
+
+
+
+
+
+using System;
+
+namespace FunctionExamples
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Test cases
+            int number = 5;
+            Console.WriteLine($"Factorial of {number} is: {Factorial(number)}");
+
+            string inputString = "Welcome to C# Programming";
+            PrintWords(inputString);
+        }
+
+        // Function to calculate factorial of a number
+        static long Factorial(int n)
+        {
+            if (n < 0)
+            {
+                throw new ArgumentException("Factorial is not defined for negative numbers.");
+            }
+            else if (n == 0 || n == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                long factorial = 1;
+                for (int i = 2; i <= n; i++)
+                {
+                    factorial *= i;
+                }
+                return factorial;
+            }
+        }
+
+        // Function to print each word of a string on a new line
+        static void PrintWords(string input)
+        {
+            string[] words = input.Split(' ');
+
+            foreach (string word in words)
+            {
+                Console.WriteLine(word);
+            }
+        }
+    }
+}
+
+
+How to implement function overloading in c#?
+n C#, function overloading is supported natively through the ability to define multiple methods with the same name but different parameter lists within the same class or struct.
+
